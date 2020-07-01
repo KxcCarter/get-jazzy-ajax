@@ -7,8 +7,7 @@ function onReady() {
         // sends a request for the /artist route and awaits a response from the server.
     }).then((response) => {
         // When the response is recieved, the code below is what is executed.
-        for (let i = 0; i < response.length; i++) {
-            let artist = response[i];
+        for (let artist of response) {
             $('#artistTableBody').append(`
                 <tr>
                     <td>${artist.name}</td>
@@ -23,11 +22,9 @@ function onReady() {
 
     $.ajax({
         type: 'GET',
-        url: '/songs',
+        url: '/song',
     }).then((response) => {
-        console.log(response);
-        for (let i = 0; i < response.length; i++) {
-            let song = response[i];
+        for (let song of response) {
             $('#songTableBody').append(`
                 <tr>
                     <td>${song.title}</td>
@@ -36,5 +33,19 @@ function onReady() {
             `);
         }
 
-    })
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/album'
+    }).then((response) => {
+        for (let album of response) {
+            $('#albumTableBody').append(`
+                <tr>
+                    <td>${album.title}</td>
+                    <td>${album.year}</td>
+                </tr>
+            `)
+        }
+    });
 }

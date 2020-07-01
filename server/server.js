@@ -1,7 +1,7 @@
 const express = require('express');
 const songList = require('./public/scripts/song');
 const artistList = require('./public/scripts/artist');
-const albumList = requite('./public/scripts/albums');
+const albumList = require('./public/scripts/album');
 
 const app = express();
 const PORT = 5000;
@@ -16,12 +16,12 @@ app.get('/artist', (req, res) => {
 
 // TODO - Add GET for songs
 
-app.get('/songs', (req, res) => {
+app.get('/song', (req, res) => {
     res.send(songList);
 });
 
 app.get('/album', (req, res) => {
-    res.send(artistList)
+    res.send(albumList);
 })
 
 app.listen(PORT, () => {

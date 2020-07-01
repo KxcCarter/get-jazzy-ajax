@@ -1,7 +1,7 @@
 const express = require('express');
-const songList = require('./public/scripts/song');
-const artistList = require('./public/scripts/artist');
-const albumList = require('./public/scripts/album');
+const songList = require('./public/modules/song');
+const artistList = require('./public/modules/artist');
+const albumList = require('./public/modules/album');
 
 const app = express();
 const PORT = 5000;

@@ -3,8 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 
-const artistListArray = [
-    {
+const artistListArray = [{
         name: 'Miles Davis',
         born: 1926,
         died: 1990,
@@ -26,8 +25,7 @@ const artistListArray = [
     },
 ];
 
-const songListArray = [
-    {
+const songListArray = [{
         title: 'Take Five',
         artist: 'The Dave Brubeck Quartet',
     },
@@ -46,12 +44,18 @@ const songListArray = [
 ];
 
 app.use(express.static('server/public'));
+// the above code tells where requests for static files should look.
 
 app.get('/artist', (req, res) => {
     res.send(artistListArray);
+    // When /artist is requested, app.get sends artistListArray back as a response.
 });
 
 // TODO - Add GET for songs
+
+app.get('/songs', (req, res) => {
+    res.send(songListArray);
+});
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
